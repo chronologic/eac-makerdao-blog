@@ -1,0 +1,25 @@
+{
+  "name": "eac-makerdao-blog",
+  "version": "1.0.0",
+  "description": "Code for the blog article \"Manage Your CDP with the Ethereum Alarm Clock\"",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chronologic/eac-makerdao-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chronologic/eac-makerdao-blog/issues"
+  },
+  "homepage": "https://github.com/chronologic/eac-makerdao-blog#readme",
+  "dependencies": {
+    "@makerdao/dai": "^0.7.1"
+  }
+}
