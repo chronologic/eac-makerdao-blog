@@ -15,5 +15,12 @@ Ethereum Alarm Clock systems on the Kovan test network, please see [Appendix A](
 
 ## Case #1 - Schedule a routine collateral check and fill
 
+## Case #2 - Scheduled Dai repayment
+
 ## Appendix A - Setting up
+
+We will be using the Kovan network since both the Dai stablecoin system and the Ethereum
+Alarm Clock scheduling service both have deployed contracts there. For more about what 
+distringuishes the Kovan test network from the main Ethereum chain see [here](https://kovan-testnet.github.io/website/).
+We will use Infura to handle all the node management for us.
 
