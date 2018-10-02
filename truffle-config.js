@@ -23,6 +23,9 @@
  */
 
 // const HDWallet = require('truffle-hdwallet-provider');
+const HDWalletProvider = require("truffle-hdwallet-provider-privkey");
+
+const pk = [""];
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
@@ -60,6 +63,12 @@ module.exports = {
       // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
       // from: <address>,        // Account to send txs from (default: accounts[0])
       // websockets: true        // Enable EventEmitter interface for web3 (default: false)
+    },
+
+    kovan: {
+      provider: new HDWalletProvider(pk, "https://rarely-suitable-shark.quiknode.io/87817da9-942d-4275-98c0-4176eee51e1a/aB5gwSfQdN4jmkS65F1HyA==/"),
+      network_id: 42,
+      gas: 5000000,
     },
 
     // Useful for deploying to a public network.

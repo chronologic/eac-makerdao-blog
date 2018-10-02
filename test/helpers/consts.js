@@ -1,0 +1,6 @@
+module.exports = {
+  KOVAN: {
+    TIMESTAMP_SCHEDULER: "0x44b28e47fe781eabf8095a2a21449a82a635745b",
+    TUB: "0xa71937147b55Deb8a530C7229C442Fd3F31b7db2",
+  },
+}

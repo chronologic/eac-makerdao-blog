@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "truffle test"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,9 @@
     "eac.js-lib": "^2.4.4",
     "ethereumjs-util": "^5.2.0",
     "keythereum": "^1.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "truffle-hdwallet-provider-privkey": "^0.3.0"
   }
 }
