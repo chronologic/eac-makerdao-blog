@@ -4,9 +4,7 @@ import "./SchedulerInterface.sol";
 
 contract Save_Dangerous_CDP {
 
-    uint256 constant ONE_WEEK = 60 * 60 * 24 * 7;
-
-    address cdp;
+    address cdpId;
     address clock;
     address tub;
 
@@ -25,19 +23,21 @@ contract Save_Dangerous_CDP {
     function newSchedule() public returns (address) {
         require(msg.sender == futureTx || msg.sender == owner);
 
-        futureTx = SchedulerInterface(clock).schedule(
-            address(this),  // to
-            0,              // callData
-            [               // start uint256[8]
-                1000000,    // callGas
-                0,          // value
-                2500,       // executionWindow
-                block.timestamp + ONE_WEEK, // executionStart
-                5 gwei,     // gasPrice
-                0,          // fee
-                12500,      // bounty
-                12500       // deposit
+        uint256 scheduleFor = now + 30 minutes;
 
+        futureTx = SchedulerInterface(clock).schedule(
+            address(this),      // to
+            0,                  // callData
+            [                   //
+                1000000,        // callGas
+                0,              // value
+                2500,           // executionWindow
+                scheduleFor,    // executionStart
+                5 gwei,         // gasPrice
+                0,              // fee
+                12500,          // bounty
+                12500           // deposit
+            ]                   //
         );
 
         return futureTx;

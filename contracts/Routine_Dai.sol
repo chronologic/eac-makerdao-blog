@@ -1,8 +1,8 @@
 pragma solidity ^0.4.24;
 
-contract Routine_Dai {
+import "./SchedulerInterface.sol";
 
-    uint256 constant ONE_WEEK = 60 * 60 * 24 * 7;
+contract Routine_Dai {
 
     uint256 cdpId;
     address clock;
@@ -24,19 +24,21 @@ contract Routine_Dai {
     function newSchedule() public returns (address) {
         require(msg.sender == futureTx || msg.sender == owner);
 
+        uint256 scheduleFor = now + 20 minutes;
+
         futureTx = SchedulerInterface(clock).schedule(
-            address(this),
-            0,
-            [
-                1000000,
-                0,
-                2500,
-                block.timestamp + ONE_WEEK,
-                5 gwei,
-                0,
-                12500,
-                12500
-            ]
+            address(this),      // to
+            0,                  // callData
+            [                   //
+                1000000,        // callGas
+                0,              // value
+                2500,           // executionWindow
+                scheduleFor,    // executionStart
+                5 gwei,         // gasPrice
+                0,              // fee
+                12500,          // bounty
+                12500           // deposit
+            ]                   //
         );
 
         return futureTx;
