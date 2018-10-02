@@ -1,6 +1,6 @@
 const Maker = require('@makerdao/dai');
 
-const maker = Maker.create('kovan', { privateKey: '0x1461ed40d033bc72941f232cff50e72d5b452b864625e694eeac210069f93af5' });
+const maker = Maker.create('kovan', { privateKey: '' });
 
 const createNewCDP = async () => {
   await maker.authenticate();
