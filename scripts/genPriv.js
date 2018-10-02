@@ -1,11 +1,11 @@
 const keyeth = require('keythereum');
 const ethUtil = require('ethereumjs-util');
 
-// const keyObj = keyeth.create();
+const key = keyeth.create();
 
-// console.log(keyObj.privateKey.toString('hex'));
+const pk = key.privateKey.toString('hex');
 
-const addr = ethUtil.privateToAddress(Buffer.from('1461ed40d033bc72941f232cff50e72d5b452b864625e694eeac210069f93af5', 'hex'));
+const addr = ethUtil.privateToAddress(Buffer.from(pk, 'hex'));
 
-console.log(addr.toString('hex'));
-
+console.log('Address - ' + addr.toString('hex'));
+console.log('Private Key - ' + pk);
