@@ -5,7 +5,8 @@ import "./SchedulerInterface.sol";
 contract Routine_Dai {
 
     uint256 constant gwei = 1000000000;
-    uint256 constant payAmt = 23;
+
+    uint256 public payAmt;
 
     bytes32 cdpId;
     address clock;
@@ -18,12 +19,14 @@ contract Routine_Dai {
     constructor(
         bytes32 _cdpId,
         address _dai,
-        address _clock
+        address _clock,
+        uint256 _payAmt
     ) public {
         owner = msg.sender;
         cdpId = _cdpId;
         dai = _dai;
         clock = _clock;
+        payAmt = _payAmt;
     }
 
     function newSchedule() public returns (address) {
@@ -39,7 +42,7 @@ contract Routine_Dai {
                 0,              // value
                 2500,           // executionWindow
                 scheduleFor,    // executionStart
-                5 * gwei,         // gasPrice
+                5 * gwei,       // gasPrice
                 0,              // fee
                 12500,          // bounty
                 12500           // deposit
@@ -52,10 +55,13 @@ contract Routine_Dai {
     function () public {
         require(msg.sender == futureTx, "Scheduled Transaction must be the one calling this contract.");
 
-        // dai.transferFrom(owner, address(this), payAmt);
-        // tub.wipe(cdpId, payAmt);
-        // if (tub.tab(cdpId) > 0) {
-        //     newSchedule();
-        // }
+        tub.wipe(cdpId, payAmt);
+        uint256 tab = ub.tab(cdpId)
+        if (tab > 0) {
+            if (tab < payAmt) {
+                payAmt = tab;
+            }
+            newSchedule();
+        }
     }
 }
